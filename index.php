@@ -31,28 +31,30 @@
 //	If there were no request parameters the menu is shown
 	else
 	{
-		site_header ("Block Crawler Home Page");
+		site_header ("GreenCoin Block Explorer");
 		
-		echo "	<div id=\"node_info\">\n";
+		echo "	<div class=\"row\">\n";
 		echo "\n";
 		
 		$network_info = getinfo ();
+
+		// round ( float $val [, int $precision = 0 [, int $mode = PHP_ROUND_HALF_UP ]] 
 		
-		echo "		<div class=\"node_detail\">\n";
-		echo "			<span class=\"node_desc\">Block Count:</span><br>\n";
-		echo "			".$network_info["blocks"]."\n";
+		echo "		<div class=\"col-sm-3\">\n";
+		echo "			<h4>Block Count: ";
+		echo "			".number_format($network_info["blocks"])."</h4>\n";
 		echo "		</div>\n";
 		echo "\n";
 
-		echo "		<div class=\"node_detail\">\n";
-		echo "			<span class=\"node_desc\">Difficulty:</span><br>\n";
-		echo "			".$network_info["difficulty"]."\n";
+		echo "		<div class=\"col-sm-3\">\n";
+		echo "			<h4>Difficulty: ";
+		echo "			".number_format($network_info["difficulty"])."</h4>\n";
 		echo "		</div>\n";
 		echo "\n";
 
-		echo "		<div class=\"node_detail\">\n";
-		echo "			<span class=\"node_desc\">Connections:</span><br>\n";
-		echo "			".$network_info["connections"]."\n";
+		echo "		<div class=\"col-sm-2\">\n";
+		echo "			<h4>Connections: ";
+		echo "			".$network_info["connections"]."</h4>\n";
 		echo "		</div>\n";
 		echo "\n";
 
@@ -60,45 +62,57 @@
 		
 		if ($net_speed != "")
 		{
-			echo "		<div class=\"node_detail\">\n";
-			echo "			<span class=\"node_desc\">Network H/s:</span><br>\n";
-			echo "			".$net_speed."\n";
+			echo "		<div class=\"col-sm-4\">\n";
+			echo "			<h4>Network Hashrate (GH/s): ";
+			echo "			".round($net_speed/1000000000, 1, PHP_ROUND_HALF_DOWN)."</h4>\n";
 			echo "		</div>\n";
 			echo "\n";
 		}
-		
+
 		echo "	</div>\n";
 		echo "\n";
 
-		echo "	<div id=\"site_menu\">\n";
+    // start new row
+		echo "	<div class=\"row-grey\">\n";
+
+		// start new row
+		echo "	<div class=\"row\">\n";
 		echo "\n";
-		
-		echo "		<div class=\"menu_item\">\n";
-		echo "			<span class=\"menu_desc\">Enter a Block Index / Height</span><br>\n";
-		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<input type=\"text\" name=\"block_height\" size=\"40\">\n";
-		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\">\n";
+		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\" class=\"form-group\">\n";
+		echo "			  <br \\><label for=\"block_height\" >Enter a Block Index (Height):</label><br \\>\n";
+		echo "				<input type=\"text\" name=\"block_height\" placeholder=\"Block Number\">\n";
+		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\" class=\"btn btn-primary\">\n";
+		echo "			</form>\n";
+		echo "  </div>\n";
+		echo "\n";
+
+		// start new row
+		echo "	<div class=\"row\">\n";
+		echo "\n";
+		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\" class=\"form-group\">\n";
+		echo "        <br \\><label for=\"transaction\" >Enter a Transaction ID:</label><br \\>\n";
+		echo "				<input type=\"text\" name=\"transaction\" placeholder=\"TXID\" size=\"20\">\n";
+		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To TXID\" class=\"btn btn-primary\">\n";
+		echo "			</form>\n";
+		echo "   </div>\n";
+		echo "\n";
+
+		// start new row
+		echo "	<div class=\"row\">\n";
+		echo "\n";
+		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\" class=\"form-group\">\n";
+		echo"         <br \\><label for=\"block_hash\" >Enter a Block Hash:</label><br \\>\n";
+		echo "				<input type=\"text\" name=\"block_hash\" placeholder=\"Block Hash\" size=\"20\">\n";
+		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\" class=\"btn btn-primary\">\n";
 		echo "			</form>\n";
 		echo "		</div>\n";
 		echo "\n";
 
-		echo "		<div class=\"menu_item\">\n";
-		echo "			<span class=\"menu_desc\">Enter A Block Hash</span><br>\n";
-		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<input type=\"text\" name=\"block_hash\" size=\"40\">\n";
-		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\">\n";
-		echo "			</form>\n";
-		echo "		</div>\n";
+		// ends the row-grey
+		echo "	</div>\n";
 		echo "\n";
 
-		echo "		<div class=\"menu_item\">\n";
-		echo "			<span class=\"menu_desc\">Enter A Transaction ID</span><br>\n";
-		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<input type=\"text\" name=\"transaction\" size=\"40\">\n";
-		echo "					<input type=\"submit\" name=\"submit\" value=\"Jump To TX\">\n";
-		echo "			</form>\n";
-		echo "		</div>\n";
-		echo "\n";
+		// ends the all three elements in the row
 
 		echo "	</div>\n";
 		echo "\n";
