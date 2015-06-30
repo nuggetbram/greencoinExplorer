@@ -1,0 +1,108 @@
+.btn-custom {
+  background-color: hsl(360, 100%, 0%) !important;
+  color: #fff;
+}
+
+.btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active, .open>.dropdown-toggle.btn-custom {
+    color: #fff;
+    background-color: #837171;
+    border-color: #837171; 
+}
+
+.table
+{
+  margin: 0 auto !important;
+  float: none !important;
+  border-collapse: separate;
+  border-spacing: 10px 0px;
+}
+
+.table>thead>tr>th {
+  text-align: center;
+}
+
+.col-md-4 {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.col-md-6 {
+	background-color: #D6EBD6;
+	font-size: 2em;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.col-md-8 {
+	background-color: #eee;
+	font-size: 1em;
+	text-align: center;
+}
+
+.col-md-12 {
+	background-color: #80B2FF;
+	font-size: 2em;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.row {
+	text-align: center;
+	border-top: 1px solid gray;
+}
+
+
+.row + .row {
+border-top:0;
+}
+
+.label-custom {
+	padding-right: 5px;
+}
+
+.jumbotron {
+	background-color: #f1f1f1;
+	text-align: center;
+}
+
+.container-fluid {
+	max-width: 1080px;
+}
+
+.row-grey {
+	background-color: #f0f0f0;
+	border-bottom: 1px solid gray;
+}
+
+footer {
+	text-align: center;
+	margin-top: 45px;
+	padding-top: 5px;
+	border-top: 1px solid $gray-light;
+	color: $gray-light;
+	h6 {
+		font-size: 0.7em;
+		font-style: none;
+		a {
+	  	color: $gray;
+	  	text-decoration: none;
+	  	&:hover {
+		    color: $gray-darker;
+		  }
+		}
+	}
+  small {
+	  float: left;
+  }
+  ul {
+	  float: right;
+	  list-style: none;
+    li {
+	    float: left;
+			margin-left: 15px;
+		}
+	}
+}
